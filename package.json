@@ -5,7 +5,7 @@
   "main": "install.js",
   "scripts": {
     "test": "",
-    "install": "npm i && node install.js"
+    "postinstall": "npm i && node install.js"
   },
   "repository": {
     "type": "git",
