@@ -1,0 +1,26 @@
+{
+  "name": "ionic-plugin-bluetoothle",
+  "version": "0.0.1",
+  "description": "Ionic Native plugin wrapper for cordova-plugin-bluetoothle ",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somq/ionic-plugin-bluetoothle.git"
+  },
+  "keywords": [
+    "ble",
+    "bluetooth",
+    "bluetoothle",
+    "cordova",
+    "ionic"
+  ],
+  "author": "somq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/somq/ionic-plugin-bluetoothle/issues"
+  },
+  "homepage": "https://github.com/somq/ionic-plugin-bluetoothle#readme"
+}
