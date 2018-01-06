@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/somq/ionic-plugin-bluetoothle/issues"
   },
-  "homepage": "https://github.com/somq/ionic-plugin-bluetoothle#readme"
+  "homepage": "https://github.com/somq/ionic-plugin-bluetoothle#readme",
+  "devDependencies": {
+    "ncp": "^2.0.0"
+  }
 }
