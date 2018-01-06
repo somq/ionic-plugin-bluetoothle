@@ -1,6 +1,6 @@
 {
   "name": "ionic-plugin-bluetoothle",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Ionic Native plugin wrapper for cordova-plugin-bluetoothle ",
   "main": "install.js",
   "scripts": {
