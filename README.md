@@ -21,13 +21,13 @@ Ionic Native plugin wrapper for cordova-plugin-bluetoothle
 [npm](https://www.npmjs.com/):
 
 ```sh
-npm install ionic-plugin-bluetoothle && npm run build
+npm install ionic-plugin-bluetoothle --save && node node_modules\ionic-plugin-bluetoothle\install.js
 ```
 
 [yarn](https://yarnpkg.com/):
 
 ```sh
-yarn add ionic-plugin-bluetoothle && npm run build
+yarn add ionic-plugin-bluetoothle && node node_modules\ionic-plugin-bluetoothle\install.js
 ```
 
 
@@ -74,33 +74,10 @@ Informations about methods can be found on the original plugin repository:
 [randdusing/cordova-plugin-bluetoothle
 ](https://github.com/randdusing/cordova-plugin-bluetoothle/blob/master/readme.md)
 
----
-
-A full working example can be found in ./example:
-
-```sh
-git clone https://github.com/somq/ionic-plugin-bluetoothle-dev.git
-cd ionic-plugin-bluetoothle/example
-npm i
-ionic cordova plugin add cordova-plugin-bluetoothle && 
-ionic cordova run android --device -lc
-```
 
 ## Development
 
-```sh
-git clone https://github.com/somq/ionic-plugin-bluetoothle-dev.git
-cd ionic-plugin-bluetoothle
-```
-
-*edit ./src/@ionic-native/plugins/bluetooth-le/index.ts*
-
-```sh
-git clone https://github.com/somq/ionic-plugin-bluetoothle-dev.git
-cd ionic-plugin-bluetoothle
-```
-
-* Developer guide can be found on the official [Ionic Native documentation](https://github.com/ionic-team/ionic-native/blob/master/DEVELOPER.md)
+Take a look at the [development repository](https://github.com/somq/ionic-plugin-bluetoothle-dev)
 
 ## Original doc
 
@@ -109,8 +86,14 @@ You can find the doc on the original plugin repository:
 ](https://github.com/randdusing/cordova-plugin-bluetoothle/blob/master/readme.md)
 
 ## Versions
-Ionic Native version: "4.5.1",
+
+Known versions @ this development stage:
+
+* Ionic version: "4.5.1"
+* Ionic Native version: "3.9.2"
+* cordova-plugin-bluetoothle: "4.4.3"
+
 
 ## License
 
-todo
+MIT
