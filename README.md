@@ -74,6 +74,7 @@ import { BluetoothLE } from '@ionic-native/bluetooth-le';
 home.ts
 ```js
 
+import { Platform } from 'ionic-angular';
 import { BluetoothLE } from '@ionic-native/bluetooth-le';
 
 @Component({
@@ -82,14 +83,20 @@ import { BluetoothLE } from '@ionic-native/bluetooth-le';
 })
 export class HomePage {
 
-  constructor(public bluetoothle: BluetoothLE) {
+  constructor(public bluetoothle: BluetoothLE, public plt: Platform) {
 
-    bluetoothle.initialize().then(ble => {
-      console.log('ble', ble.status) // logs 'enabled'
+
+    this.plt.ready().then((readySource) => {
+
+      console.log('Platform ready from', readySource);
+
+      this.bluetoothle.initialize().then(ble => {
+        console.log('ble', ble.status) // logs 'enabled'
+      });
+
     });
-
   }
-
+}
 
 ```
 
@@ -106,6 +113,16 @@ Cannot find module '@ionic-native/bluetooth-le'.
 run this cmd to re-copy the file to the node_modules/@ionic-native folder
 ```sh
 node node_modules\ionic-plugin-bluetoothle\install.js
+```
+---
+
+```sh
+plugin_not_installed
+```
+
+reinstal the bluetoothle plugin
+```sh
+ionic cordova plugin add cordova-plugin-bluetoothle
 ```
 
 
