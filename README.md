@@ -144,6 +144,9 @@ Known versions @ this development stage:
 * Ionic Native version: "3.9.2"
 * cordova-plugin-bluetoothle: "4.4.3"
 
+## Credits
+* [sublimator](https://github.com/sublimator)
+
 
 ## License
 
