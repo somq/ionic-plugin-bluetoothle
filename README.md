@@ -10,7 +10,9 @@ Ionic Native plugin wrapper for cordova-plugin-bluetoothle
 ## Table of Contents
 
 * [Install](#install)
+* [Install from scratch](#install-from-scratch)
 * [Usage](#usage)
+* [Troubleshoot](#troubleshoot)
 * [Development](#development)
 * [Versions](#versions)
 * [License](#license)
@@ -29,6 +31,27 @@ npm install ionic-plugin-bluetoothle --save && node node_modules\ionic-plugin-bl
 ```sh
 yarn add ionic-plugin-bluetoothle && node node_modules\ionic-plugin-bluetoothle\install.js
 ```
+
+
+## Install from scratch
+
+
+```sh
+ionic start ionic-bluetoothle blank
+
+cd ionic-bluetoothle
+
+npm install ionic-plugin-bluetoothle --save && node node_modules\ionic-plugin-bluetoothle\install.js
+
+ionic cordova plugin add cordova-plugin-bluetoothle
+```
+
+Edit the files like explained in the [usage](https://github.com/somq/ionic-plugin-bluetoothle#usage) section
+
+```sh
+ionic cordova run android --device -lc
+```
+
 
 
 ## Usage
@@ -73,6 +96,17 @@ export class HomePage {
 Informations about methods can be found on the original plugin repository: 
 [randdusing/cordova-plugin-bluetoothle
 ](https://github.com/randdusing/cordova-plugin-bluetoothle/blob/master/readme.md)
+
+## Troubleshoot
+
+```sh
+Cannot find module '@ionic-native/bluetooth-le'.
+```
+
+run this cmd to re-copy the file to the node_modules/@ionic-native folder
+```sh
+node node_modules\ionic-plugin-bluetoothle\install.js
+```
 
 
 ## Development
