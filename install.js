@@ -12,5 +12,7 @@ ncp(source, destination, function (err) {
     return console.error(err);
   }
   console.log('Copied ionic-plugin-bluetooth-le files successfuly');
+  console.log('Source:'+ source);
+  console.log('Destination:'+ destination);
 });
 
