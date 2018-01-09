@@ -1,7 +1,6 @@
 # Ionic Native plugin wrapper for cordova-plugin-bluetoothle
 
 # ionic-plugin-bluetoothle
-Ionic Native plugin wrapper for cordova-plugin-bluetoothle
 
 > [Ionic Native](https://github.com/ionic-team/ionic-native) plugin wrapper for [cordova-plugin-bluetoothle](https://github.com/randdusing/cordova-plugin-bluetoothle)
 
