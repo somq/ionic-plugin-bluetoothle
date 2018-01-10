@@ -36,6 +36,7 @@ export declare class BluetoothLE extends IonicNativePlugin {
         message?: string;
     }>;
     enable(): void;
+    disable(): void;
     getAdapterInfo(): Promise<{
         name: string;
         address: string;
@@ -43,19 +44,6 @@ export declare class BluetoothLE extends IonicNativePlugin {
         isEnabled: boolean;
         isScanning: boolean;
         isDiscoverable: boolean;
-    }>;
-    retrieveConnected(params?: any): Promise<any>;
-    isEnabled(): Promise<{
-        isEnabled: boolean;
-    }>;
-    requestPermission(): Promise<{
-        requestPermission: boolean;
-    }>;
-    requestLocation(): Promise<{
-        requestLocation: boolean;
-    }>;
-    isLocationEnabled(): Promise<{
-        isLocationEnabled: boolean;
     }>;
     startScan(params: {
         allowDuplicates?: boolean;
@@ -70,8 +58,48 @@ export declare class BluetoothLE extends IonicNativePlugin {
         name?: string;
         address?: string;
     }>;
-    hasPermission(): Promise<{
-        hasPermission: boolean;
+    stopScan(): Promise<{
+        status: 'scanStopped';
+    }>;
+    retrieveConnected(params?: any): Promise<any>;
+    /**
+     * bond
+     */
+    bond(params: {
+        address: string;
+        autoConnect?: boolean;
+    }): Observable<{
+        name: string;
+        address: string;
+        status: 'bonded' | 'bonding' | 'unbonded';
+    }>;
+    /**
+     * unbond
+     */
+    unbond(params: {
+        address: string;
+    }): Promise<{
+        name: string;
+        address: string;
+        status: 'unbonded';
+    }>;
+    connect(params: {
+        address: string;
+        autoConnect?: boolean;
+    }): Observable<{
+        name: string;
+        address: string;
+        status: 'connected' | 'disconnected';
+    }>;
+    /**
+     * reconnect
+     */
+    reconnect(params: {
+        address: string;
+    }): Observable<{
+        name: string;
+        address: string;
+        status: 'connected' | 'disconnected';
     }>;
     disconnect(params: {
         address: string;
@@ -81,24 +109,14 @@ export declare class BluetoothLE extends IonicNativePlugin {
         status: 'disconnected';
     }>;
     /**
-     * Note, no callback will occur on write without response on iOS.
+     * close
      */
-    write(params: ({
-        value: string;
-        type?: 'noResponse';
-    } & ICharacteristicPath)): Promise<any> | void;
-    read(params: ICharacteristicPath): Promise<{
-        value: string;
+    close(params: {
+        address: string;
+    }): Promise<{
         name: string;
+        address: string;
         status: string;
-    } & ICharacteristicPath>;
-    connect(params: {
-        address: string;
-        autoConnect?: boolean;
-    }): Observable<{
-        name: string;
-        address: string;
-        status: 'connected' | 'disconnected';
     }>;
     discover(params: {
         address: string;
@@ -115,14 +133,170 @@ export declare class BluetoothLE extends IonicNativePlugin {
             }[];
         }[];
     }>;
+    /**
+     * services (iOS)
+     */
+    /**
+     * characteristics (iOS)
+     */
+    /**
+     * descriptors
+     */
+    read(params: ICharacteristicPath): Promise<{
+        value: string;
+        name: string;
+        status: string;
+    } & ICharacteristicPath>;
     subscribe(params: ICharacteristicPath): Observable<{
         status: 'subscribed' | 'subscribedResult';
         value: string;
     }>;
     unsubscribe(params: any): void;
-    stopScan(): Promise<{
-        status: 'scanStopped';
+    /**
+     * Note, no callback will occur on write without response on iOS.
+     */
+    write(params: ({
+        value: string;
+        type?: 'noResponse';
+    } & ICharacteristicPath)): Promise<any> | void;
+    /**
+     * writeQ
+     */
+    writeQ(params: ({
+        value: string;
+        type?: 'noResponse';
+    } & ICharacteristicPath)): Promise<any> | void;
+    /**
+     * readDescriptor
+     */
+    /**
+     * writeDescriptor
+     */
+    /**
+     * rssi
+     */
+    /**
+     * mtu (Android 5+)
+     */
+    /**
+     * requestConnectionPriority (Android 5+)
+     */
+    /**
+     * isInitialized
+     */
+    isInitialized(): Promise<{
+        isInitialized: boolean;
     }>;
+    isEnabled(): Promise<{
+        isEnabled: boolean;
+    }>;
+    /**
+     * isScanning
+     */
+    isScanning(): Promise<{
+        isScanning: boolean;
+    }>;
+    /**
+     * isBonded (Android)
+     */
+    /**
+     * wasConnected
+     */
+    /**
+     * isConnected
+     */
+    /**
+     * isDiscovered
+     */
+    hasPermission(): Promise<{
+        hasPermission: boolean;
+    }>;
+    requestPermission(): Promise<{
+        requestPermission: boolean;
+    }>;
+    isLocationEnabled(): Promise<{
+        isLocationEnabled: boolean;
+    }>;
+    requestLocation(): Promise<{
+        requestLocation: boolean;
+    }>;
+    /**
+     * initializePeripheral @todo
+     */
+    initializePeripheral(params: {
+        request?: boolean;
+        restoreKey: string;
+    }): Promise<{
+        status: string;
+        address: string;
+        service: string;
+        characteristic: string;
+        requestId: number;
+        value: string;
+        offset: number;
+        mtu: number;
+    }>;
+    /**
+     * addService @todo
+     */
+    addService(params: {
+        service: string;
+        characteristics: {
+            uuid: string;
+            permissions: {
+                read: boolean;
+                write: boolean;
+                readEncryptionRequired: boolean;
+                writeEncryptionRequired: boolean;
+            };
+            properties: {
+                read: boolean;
+                writeWithoutResponse: boolean;
+                write: boolean;
+                notify: boolean;
+                indicate: boolean;
+                authenticatedSignedWrites: boolean;
+                notifyEncryptionRequired: boolean;
+                indicateEncryptionRequired: boolean;
+            };
+        }[];
+    }): Promise<{
+        status: string;
+        service: string;
+    }>;
+    /**
+     * removeService
+     */
+    /**
+     * removeAllServices
+     */
+    /**
+     * startAdvertising @todo
+     */
+    startAdvertising(params: {
+        services?: string[];
+        service?: string;
+        name: string;
+    }): Promise<{
+        status: string;
+    }>;
+    /**
+     * stopAdvertising
+     */
+    /**
+     * respond
+     */
+    /**
+     * notify
+     */
+    bytesToEncodedString(bytes: Uint8Array): string;
+    encodedStringToBytes(str: string): Uint8Array;
+    /**
+     * stringToBytes
+     */
+    /**
+     * bytesToString
+     */
     SCAN_MODE_OPPORTUNISTIC: number;
     SCAN_MODE_LOW_POWER: number;
     SCAN_MODE_BALANCED: number;
@@ -135,6 +309,4 @@ export declare class BluetoothLE extends IonicNativePlugin {
     CALLBACK_TYPE_ALL_MATCHES: number;
     CALLBACK_TYPE_FIRST_MATCH: number;
     CALLBACK_TYPE_MATCH_LOST: number;
-    bytesToEncodedString(bytes: Uint8Array): string;
-    encodedStringToBytes(str: string): Uint8Array;
 }
