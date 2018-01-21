@@ -22,13 +22,13 @@
 [npm](https://www.npmjs.com/):
 
 ```sh
-npm install ionic-plugin-bluetoothle --save && node node_modules\ionic-plugin-bluetoothle\install.js
+npm install ionic-plugin-bluetoothle --save
 ```
 
 [yarn](https://yarnpkg.com/):
 
 ```sh
-yarn add ionic-plugin-bluetoothle && node node_modules\ionic-plugin-bluetoothle\install.js
+yarn add ionic-plugin-bluetoothle
 ```
 
 
@@ -40,7 +40,7 @@ ionic start ionic-bluetoothle blank
 
 cd ionic-bluetoothle
 
-npm install ionic-plugin-bluetoothle --save && node node_modules\ionic-plugin-bluetoothle\install.js
+npm install ionic-plugin-bluetoothle --save
 
 ionic cordova plugin add cordova-plugin-bluetoothle
 ```
