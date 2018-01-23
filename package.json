@@ -4,7 +4,8 @@
   "description": "Ionic Native plugin wrapper for cordova-plugin-bluetoothle ",
   "main": "install.js",
   "scripts": {
-    "test": ""
+    "test": "",
+    "postinstall": "node ./install.js"
   },
   "repository": {
     "type": "git",
