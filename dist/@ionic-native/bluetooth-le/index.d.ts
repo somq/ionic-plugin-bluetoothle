@@ -5,6 +5,20 @@ export interface ICharacteristicPath {
     service: string;
     characteristic: string;
 }
+export interface Params {
+    /** The address/identifier provided by the scan's return object */
+    address: string;
+    /** The service's ID */
+    service: string;
+}
+export interface DescriptorParams extends Params {
+    /** The characteristic's ID */
+    characteristic: string;
+}
+export interface WriteCharacteristicParams extends DescriptorParams {
+    value: string;
+    type?: string;
+}
 /**
  * @name Bluetooth L E
  * @description
@@ -150,15 +164,12 @@ export declare class BluetoothLE extends IonicNativePlugin {
     subscribe(params: ICharacteristicPath): Observable<{
         status: 'subscribed' | 'subscribedResult';
         value: string;
-    }>;
+    } & ICharacteristicPath>;
     unsubscribe(params: any): void;
     /**
      * Note, no callback will occur on write without response on iOS.
      */
-    write(params: ({
-        value: string;
-        type?: 'noResponse';
-    } & ICharacteristicPath)): Promise<any> | void;
+    write(params: WriteCharacteristicParams): Promise<any>;
     /**
      * writeQ
      */

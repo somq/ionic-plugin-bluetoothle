@@ -125,6 +125,12 @@ var BluetoothLE = (function (_super) {
     BluetoothLE.prototype.write = function (params) {
         return;
     };
+    // write(params: ({
+    //   value: string,
+    //   type?: 'noResponse'
+    // } & ICharacteristicPath)): Promise<any> | void {
+    //   return;
+    // }
     /**
      * writeQ
      */
@@ -335,7 +341,7 @@ var BluetoothLE = (function (_super) {
         Cordova({ callbackOrder: 'reverse' }),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Object)
+        __metadata("design:returntype", Promise)
     ], BluetoothLE.prototype, "write", null);
     __decorate([
         Cordova({ callbackOrder: 'reverse' }),
