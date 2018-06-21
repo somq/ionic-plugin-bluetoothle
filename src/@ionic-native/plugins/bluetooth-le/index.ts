@@ -336,7 +336,7 @@ export class BluetoothLE extends IonicNativePlugin {
    * initializePeripheral @todo
    */
   @Cordova({callbackOrder: 'reverse'})
-  initializePeripheral(params: {request?: boolean, restoreKey: string}): Promise<{
+  initializePeripheral(params: {request?: boolean, restoreKey: string}): Observable<{
     status: string
     address: string
     service: string

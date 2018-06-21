@@ -237,7 +237,7 @@ export declare class BluetoothLE extends IonicNativePlugin {
     initializePeripheral(params: {
         request?: boolean;
         restoreKey: string;
-    }): Promise<{
+    }): Observable<{
         status: string;
         address: string;
         service: string;
