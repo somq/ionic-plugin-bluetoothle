@@ -392,10 +392,10 @@ var BluetoothLE = (function (_super) {
         __metadata("design:returntype", Promise)
     ], BluetoothLE.prototype, "requestLocation", null);
     __decorate([
-        Cordova({ callbackOrder: 'reverse' }),
+        Cordova({ callbackOrder: 'reverse', observable: true  }),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
+        __metadata("design:returntype", Observable)
     ], BluetoothLE.prototype, "initializePeripheral", null);
     __decorate([
         Cordova({ callbackOrder: 'reverse' }),
