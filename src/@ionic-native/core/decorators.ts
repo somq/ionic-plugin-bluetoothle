@@ -1,7 +1,8 @@
-import { instanceAvailability, checkAvailability, wrap, wrapInstance, overrideFunction } from './plugin';
-import { getPlugin, getPromise } from './util';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/observable/throw';
+import { _throw } from 'rxjs/observable/throw';
+
+import { checkAvailability, instanceAvailability, overrideFunction, wrap, wrapInstance } from './plugin';
+import { getPlugin, getPromise } from './util';
 
 export interface PluginConfig {
   /**
@@ -109,21 +110,23 @@ export interface CordovaCheckOptions {
  * @private
  */
 export function InstanceCheck(opts: CordovaCheckOptions = {}) {
-  return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
+  return (
+    pluginObj: Object,
+    methodName: string,
+    descriptor: TypedPropertyDescriptor<any>
+  ): TypedPropertyDescriptor<any> => {
     return {
       value: function(...args: any[]): any {
         if (instanceAvailability(this)) {
           return descriptor.value.apply(this, args);
         } else {
-
           if (opts.sync) {
             return;
           } else if (opts.observable) {
-            return new Observable<any>(() => { });
+            return new Observable<any>(() => {});
           }
 
-          return getPromise(() => { });
-
+          return getPromise(() => {});
         }
       },
       enumerable: true
@@ -136,7 +139,11 @@ export function InstanceCheck(opts: CordovaCheckOptions = {}) {
  * @private
  */
 export function CordovaCheck(opts: CordovaCheckOptions = {}) {
-  return (pluginObj: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>): TypedPropertyDescriptor<any> => {
+  return (
+    pluginObj: Object,
+    methodName: string,
+    descriptor: TypedPropertyDescriptor<any>
+  ): TypedPropertyDescriptor<any> => {
     return {
       value: function(...args: any[]): any {
         const check = checkAvailability(pluginObj);
@@ -146,7 +153,7 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
           if (opts.sync) {
             return null;
           } else if (opts.observable) {
-            return Observable.throw(new Error(check && check.error));
+            return _throw(new Error(check && check.error));
           }
           return Promise.reject(check && check.error);
         }
@@ -177,7 +184,6 @@ export function CordovaCheck(opts: CordovaCheckOptions = {}) {
  */
 export function Plugin(config: PluginConfig): ClassDecorator {
   return function(cls: any) {
-
     // Add these fields to the class
     for (let prop in config) {
       cls[prop] = config[prop];
@@ -226,7 +232,11 @@ export function Plugin(config: PluginConfig): ClassDecorator {
  * and the required plugin are installed.
  */
 export function Cordova(opts: CordovaOptions = {}) {
-  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+  return (
+    target: Object,
+    methodName: string,
+    descriptor: TypedPropertyDescriptor<any>
+  ) => {
     return {
       value: function(...args: any[]) {
         return wrap(this, methodName, opts).apply(this, args);
@@ -268,7 +278,7 @@ export function CordovaProperty(target: any, key: string) {
         return null;
       }
     },
-    set: (value) => {
+    set: value => {
       if (checkAvailability(target, key) === true) {
         getPlugin(target.constructor.getPluginRef())[key] = value;
       }
@@ -301,7 +311,11 @@ export function InstanceProperty(target: any, key: string) {
  * and the required plugin are installed.
  */
 export function CordovaFunctionOverride(opts: any = {}) {
-  return (target: Object, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+  return (
+    target: Object,
+    methodName: string,
+    descriptor: TypedPropertyDescriptor<any>
+  ) => {
     return {
       value: function(...args: any[]) {
         return overrideFunction(this, methodName, opts);
@@ -310,4 +324,3 @@ export function CordovaFunctionOverride(opts: any = {}) {
     };
   };
 }
-
