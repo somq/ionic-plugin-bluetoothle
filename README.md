@@ -5,6 +5,12 @@
 > [Ionic Native](https://github.com/ionic-team/ionic-native) plugin wrapper for [cordova-plugin-bluetoothle](https://github.com/randdusing/cordova-plugin-bluetoothle)
 
 
+> :exclamation: :tada:
+> **bluetooth-le** has been added to [ionic plugin repository](https://github.com/ionic-team/ionic-native/tree/master/src/%40ionic-native/plugins/bluetooth-le) and is now part of the [ionic-native v5.0.0-beta.15](https://github.com/ionic-team/ionic-native/tree/v5.0.0-beta.15) available for Ionic v4.
+> Hopefuly, a v3 version will be published very soon by Ionic.
+
+> As soon as this is done and both version remain stable, I will update this readme according to the Ionic readme...
+
 
 ## Table of Contents
 
