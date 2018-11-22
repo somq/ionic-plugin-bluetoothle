@@ -9,7 +9,8 @@
 
 > :exclamation: :tada:
 > **bluetooth-le** has been added to [ionic plugin repository](https://github.com/ionic-team/ionic-native/tree/master/src/%40ionic-native/plugins/bluetooth-le).
-Documentation can be found @ [ionic native doc](https://ionicframework.com/docs/native/bluetoothle/)
+Documentation can be found @ [ionic native doc](https://ionicframework.com/docs/native/bluetoothle/).   
+It works with ionic 3 & ionic 4!
 
 
 
