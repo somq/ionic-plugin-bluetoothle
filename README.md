@@ -1,6 +1,8 @@
+# [MOVED TO IONIC NATIVE PLUGIN REPO]
+
 # Ionic Native plugin wrapper for cordova-plugin-bluetoothle
 
-# [MOVED TO IONIC NATIVE PLUGIN REPO] ionic-plugin-bluetoothle
+# ionic-plugin-bluetoothle
 
 > [Ionic Native](https://github.com/ionic-team/ionic-native) plugin wrapper for [cordova-plugin-bluetoothle](https://github.com/randdusing/cordova-plugin-bluetoothle)
 
